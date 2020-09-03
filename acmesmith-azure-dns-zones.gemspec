@@ -1,3 +1,5 @@
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require_relative 'lib/acmesmith-azure-dns-zones/version'
 
 Gem::Specification.new do |spec|
@@ -26,4 +28,7 @@ Gem::Specification.new do |spec|
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
+  spec.add_dependency "acmesmith", "~> 2.0"
+  spec.add_dependency "azure_mgmt_dns"
+  spec.add_development_dependency "pry-byebug"
 end
