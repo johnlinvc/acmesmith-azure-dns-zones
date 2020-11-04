@@ -35,7 +35,9 @@ module Acmesmith
 
       def relative_record_name(zone, domain, challenge)
         fullname = challenge.record_name + "." +domain
-        fullname.gsub(/\.#{Regexp.escape(zone.name)}\z/, "")
+        record_name = fullname.gsub(/\.#{Regexp.escape(zone.name)}\z/, "")
+        record_name = "@" if record_name.empty?
+        record_name
       end
 
       def create(zone, domain, challenge)
